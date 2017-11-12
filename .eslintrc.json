@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": ["standard", "standard-jsx", "plugin:react/recommended"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "no-var": "error",
+    "prefer-const": "error",
+
+    "no-console": "off",
+    "no-unused-vars": "warn",
+    "no-undef": "off",
+    "no-implicit-globals": "error",
+
+    "react/prop-types": ["off", {}]
+  }
+}
