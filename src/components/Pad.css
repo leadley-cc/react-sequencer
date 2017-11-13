@@ -50,4 +50,15 @@
 
 .PadContainer:hover .Pad.active {
   background-color: #7febff;
+  filter: drop-shadow(0px 0px 8px #7febffbb);
+}
+
+.Pad.accent {
+  background-color: #00d8ff;
+  filter: drop-shadow(0px 0px 8px #00d8ffbb) hue-rotate(160deg);
+}
+
+.PadContainer:hover .Pad.accent {
+  background-color: #7febff;
+  filter: drop-shadow(0px 0px 8px #7febffbb) hue-rotate(160deg);
 }

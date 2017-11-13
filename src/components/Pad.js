@@ -10,7 +10,11 @@ const Pad = (props) => {
     <div
       className={'PadContainer Track' + (props.trackIndex)}
       onClick={onClick} >
-      <div className='Pad' />
+      <div className={
+        'Pad' +
+        (props.state === 1 ? ' active' : '') +
+        (props.state === 2 ? ' accent' : '')
+      } />
     </div>
   )
 }

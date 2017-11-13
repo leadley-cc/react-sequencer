@@ -19,11 +19,12 @@ const SequencerGrid = (props) => {
     )
   )
 
-  const padColumns = props.pads.map((colValues, colIndex) => (
-    colValues.map((padValue, trackIndex) => (
+  const padColumns = props.pads.map((column, colIndex) => (
+    column.map((padState, trackIndex) => (
       <Pad
         trackIndex={trackIndex}
         padIndex={colIndex}
+        state={padState}
         togglePad={props.togglePad}
         key={trackCount * (colIndex + 1) + trackIndex} />
     ))
