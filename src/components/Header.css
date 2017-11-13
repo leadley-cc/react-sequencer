@@ -1,0 +1,38 @@
+.Header {
+  background-color: #222;
+  color: white;
+}
+
+.Title-div {
+  display: inline-block;
+  padding: 20px;
+  filter: drop-shadow(0px 0px 8px #FFF0) drop-shadow(0px 0px 1px #FFF0);
+  transition: filter 0.5s ease;
+}
+
+.Title-div:hover {
+  filter: drop-shadow(0px 0px 8px #FFF6) drop-shadow(0px 0px 1px #FFFA);
+}
+
+.Title-logo {
+  animation: Title-logo-spin infinite 20s linear;
+  height: 32px;
+  vertical-align: middle;
+  transition: filter 0.5s ease;
+}
+
+.Title-div:hover .Title-logo {
+  filter: hue-rotate(160deg);
+}
+
+.Title {
+  margin: 0;
+  font-size: 1.5em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes Title-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
