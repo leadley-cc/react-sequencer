@@ -3,21 +3,21 @@ import './SequencerGrid.css'
 import TrackDetails from './TrackDetails'
 
 const SequencerGrid = (props) => {
+  const trackCount = 8
+  const padCount = 16
+
   const trackTitles = [
     'Kick', 'Snare', 'Closed Hat', 'Open Hat',
     'Clap', 'Rimshot', 'Cowbell', 'Blank'
   ]
 
-  const padValues = [
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0]
-  ]
+  const padValues = []
+  for (let i = 0; i < padCount; i++) {
+    padValues.push([])
+    for (let j = 0; j < trackCount; j++) {
+      padValues[i].push(0)
+    }
+  }
 
   const trackDetailsColumn = trackTitles.map(
     (title, index) => (

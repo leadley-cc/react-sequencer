@@ -4,6 +4,7 @@
 
   background-color: #00d8ff;
   color: white;
+  border-radius: 1px;
 }
 
 .SequencerGrid {
@@ -13,7 +14,7 @@
   display: grid;
   grid-template-columns:
     [track-details] 150px
-    [pads-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    [pads-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows:
     [track-1] 70px [track-2] 70px [track-3] 70px [track-4] 70px
     [track-5] 70px [track-6] 70px [track-7] 70px [track-8] 70px;
