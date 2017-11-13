@@ -13,6 +13,7 @@
   margin: 10px;
   border-radius: 12px;
   position: relative;
+  filter: drop-shadow(0px 0px 5px #FFF0);
 
   transition-property: background-color, filter;
   transition-duration: 0.15s;
@@ -38,13 +39,13 @@
 
 .PadContainer:hover .Pad {
   background-color: #666;
-  /*filter: drop-shadow(0px 0px 5px #FFFA);*/
+  filter: drop-shadow(0px 0px 5px #FFFA);
 }
 
 .Pad.active {
   background-color: #00d8ff;
-  /*filter: drop-shadow(0px 0px 8px #00d8ffbb);*/
-  box-shadow: 0px 0px 20px #00d8ff;
+  filter: drop-shadow(0px 0px 8px #00d8ffbb);
+  /*box-shadow: 0px 0px 20px #00d8ff;*/
 }
 
 .PadContainer:hover .Pad.active {
