@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { togglePad } from '../actions'
 import logo from '../logo.svg'
 import './App.css'
 import SequencerGrid from '../components/SequencerGrid'
@@ -14,7 +15,9 @@ class App extends Component {
             <h1 className='App-title'>React Sequencer</h1>
           </div>
         </header>
-        <SequencerGrid pads={this.props.pads} />
+        <SequencerGrid
+          pads={this.props.pads}
+          togglePad={this.props.togglePad} />
       </div>
     )
   }

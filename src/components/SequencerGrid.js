@@ -24,6 +24,7 @@ const SequencerGrid = (props) => {
       <Pad
         trackIndex={trackIndex}
         padIndex={colIndex}
+        togglePad={props.togglePad}
         key={trackCount * (colIndex + 1) + trackIndex} />
     ))
   ))
