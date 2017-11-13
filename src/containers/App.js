@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import logo from '../logo.svg'
 import './App.css'
 import SequencerGrid from '../components/SequencerGrid'
@@ -13,10 +14,24 @@ class App extends Component {
             <h1 className='App-title'>React Sequencer</h1>
           </div>
         </header>
-        <SequencerGrid />
+        <SequencerGrid pads={this.props.pads} />
       </div>
     )
   }
 }
 
-export default App
+const mapStateToProps = (state, ownProps) => {
+  return {
+    pads: state.pads
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    togglePad: (track, pad) => {
+      dispatch(togglePad(track, pad))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
