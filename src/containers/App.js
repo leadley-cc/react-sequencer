@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import logo from '../logo.svg'
 import './App.css'
+import SequencerGrid from '../components/SequencerGrid'
 
 class App extends Component {
   render () {
@@ -12,6 +13,7 @@ class App extends Component {
             <h1 className='App-title'>React Sequencer</h1>
           </div>
         </header>
+        <SequencerGrid />
       </div>
     )
   }
