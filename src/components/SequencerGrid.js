@@ -1,6 +1,7 @@
 import React from 'react'
 import './SequencerGrid.css'
 import TrackDetails from './TrackDetails'
+import Pad from './Pad'
 
 const SequencerGrid = (props) => {
   const trackCount = 8
@@ -8,7 +9,7 @@ const SequencerGrid = (props) => {
 
   const trackTitles = [
     'Kick', 'Snare', 'Closed Hat', 'Open Hat',
-    'Clap', 'Rimshot', 'Cowbell', 'Blank'
+    'Clap', 'Rimshot', 'Tom', 'Cowbell'
   ]
 
   const padValues = []
@@ -26,10 +27,11 @@ const SequencerGrid = (props) => {
   )
 
   const padColumns = padValues.map((colValues, colIndex) => (
-    colValues.map((padValue, rowIndex) => (
-      <div
-        key={padValues.length * (colIndex + 1) + rowIndex}
-        className={'Pad Pad' + (colIndex + 1) + ' Track' + (rowIndex + 1)} />
+    colValues.map((padValue, trackIndex) => (
+      <Pad
+        trackIndex={trackIndex}
+        padIndex={colIndex}
+        key={trackTitles.length * (colIndex + 1) + trackIndex} />
     ))
   ))
 

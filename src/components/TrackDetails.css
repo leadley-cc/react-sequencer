@@ -1,7 +1,7 @@
 .TrackDetails {
   text-align: center;
   line-height: 70px;
-  background-color: #005666;
+  /*background-color: #005666;*/
   transition: filter 0.5s ease;
 }
 
