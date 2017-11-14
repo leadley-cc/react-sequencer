@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
-import { playAudioBuffer } from '../helpers/webAudio'
+import playActiveSamples from '../helpers/playActiveSamples'
 import './App.css'
 import Header from '../components/Header'
 import PlayButton from '../components/PlayButton'
@@ -17,13 +17,14 @@ class App extends Component {
 
   tick () {
     this.props.nextActiveColumn()
-    playAudioBuffer(this.props.samples.kick)
+    const columnState = this.props.pads[this.props.activeColumn]
+    playActiveSamples(this.props.samples, columnState)
   }
 
   startPlaying () {
     this.interval = setInterval(
       () => this.tick(),
-      60000 / 100
+      60000 / 170 / 2
     )
   }
 
