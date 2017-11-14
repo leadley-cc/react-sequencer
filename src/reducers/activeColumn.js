@@ -3,7 +3,7 @@ const boundedIncrement = (state) => {
   return state + 1
 }
 
-const activeColumn = (state = 0, action) => {
+const activeColumn = (state = -1, action) => {
   switch (action.type) {
     case 'NEXT_ACTIVE_COLUMN':
       return boundedIncrement(state)
