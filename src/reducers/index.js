@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux'
+import samples from './samples'
 import pads from './pads'
 import playing from './playing'
 
 export default combineReducers({
+  samples,
   pads,
   playing
 })
