@@ -5,9 +5,13 @@
   cursor: pointer;
 }
 
+.PadContainer.playing {
+  background-color: #333;
+}
+
 .Pad {
   display: inline-block;
-  background-color: #444;
+  background-color: #555;
   height: 50px;
   width: 50px;
   margin: 10px;
@@ -37,8 +41,8 @@
   transform: scaleY(1.9) scaleX(1.05) rotate(90deg);
 }
 
-.PadContainer:hover .Pad {
-  background-color: #666;
+.PadContainer:hover .Pad, .PadContainer.playing .Pad {
+  background-color: #777;
   filter: drop-shadow(0px 0px 5px #FFFA);
 }
 
@@ -48,7 +52,7 @@
   /*box-shadow: 0px 0px 20px #00d8ff;*/
 }
 
-.PadContainer:hover .Pad.active {
+.PadContainer:hover .Pad.active, .PadContainer.playing .Pad.active {
   background-color: #7febff;
   filter: drop-shadow(0px 0px 8px #7febffbb);
 }
@@ -58,7 +62,7 @@
   filter: drop-shadow(0px 0px 8px #00d8ffbb) hue-rotate(160deg);
 }
 
-.PadContainer:hover .Pad.accent {
+.PadContainer:hover .Pad.accent, .PadContainer.playing .Pad.accent {
   background-color: #7febff;
   filter: drop-shadow(0px 0px 8px #7febffbb) hue-rotate(160deg);
 }

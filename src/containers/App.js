@@ -47,6 +47,7 @@ class App extends Component {
         <SequencerGrid
           playing={this.props.playing}
           pads={this.props.pads}
+          activeColumn={this.props.activeColumn}
           togglePad={this.props.togglePad} />
       </div>
     )
@@ -56,7 +57,8 @@ class App extends Component {
 const mapStateToProps = (state, ownProps) => ({
   samples: state.samples,
   pads: state.pads,
-  playing: state.playing
+  playing: state.playing,
+  activeColumn: state.activeColumn
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

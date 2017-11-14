@@ -22,6 +22,7 @@ const SequencerGrid = (props) => {
   const padColumns = props.pads.map((column, colIndex) => (
     column.map((padState, trackIndex) => (
       <Pad
+        playing={colIndex === props.activeColumn}
         trackIndex={trackIndex}
         padIndex={colIndex}
         state={padState}

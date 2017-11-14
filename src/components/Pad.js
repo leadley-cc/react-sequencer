@@ -8,7 +8,10 @@ const Pad = (props) => {
 
   return (
     <div
-      className={'PadContainer Track' + (props.trackIndex)}
+      className={
+        'PadContainer' +
+        (props.playing ? ' playing' : '')
+      }
       onClick={onClick} >
       <div className={
         'Pad' +
