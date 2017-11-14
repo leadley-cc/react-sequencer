@@ -6,11 +6,14 @@ import reducers from './reducers'
 import './index.css'
 import App from './containers/App'
 import registerServiceWorker from './registerServiceWorker'
+import loadSamples from './helpers/sampleLoader'
 
 const store = createStore(
   reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
+loadSamples(store)
 
 render(
   <Provider store={store}>
