@@ -1,19 +1,13 @@
 import React from 'react'
 import './SequencerGrid.css'
+import { TRACK_TITLES } from '../constants'
 import TrackDetails from './TrackDetails'
 import Pad from './Pad'
 
 const SequencerGrid = (props) => {
-  console.log(props)
-
   const trackCount = 8
 
-  const trackTitles = [
-    'Kick', 'Snare', 'Closed Hat', 'Open Hat',
-    'Clap', 'Rimshot', 'Tom', 'Cowbell'
-  ]
-
-  const trackDetailsColumn = trackTitles.map(
+  const trackDetailsColumn = TRACK_TITLES.map(
     (title, index) => (
       <TrackDetails key={index} trackIndex={index + 1} trackTitle={title} />
     )
