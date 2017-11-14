@@ -1,4 +1,4 @@
-import {PADS_INITIAL_STATE} from '../constants'
+import { PADS_INITIAL_STATE } from '../constants'
 
 const togglePad = (state, track, pad) => {
   const padState = state[pad][track]

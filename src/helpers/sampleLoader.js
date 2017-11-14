@@ -1,5 +1,5 @@
-import {loadSample} from '../actions'
-import {fetchSample, playAudioBuffer} from './webAudio'
+import { loadSample } from '../actions'
+import { fetchSample } from './webAudio'
 import kickSample from '../samples/808Kick.wav'
 
 const loadSamples = (store) => {
