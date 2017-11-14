@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux'
 import pads from './pads'
+import playing from './playing'
 
 export default combineReducers({
-  pads
+  pads,
+  playing
 })
 
 export const getPadState = (state, padIndex, trackIndex) => (
