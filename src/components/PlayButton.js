@@ -3,7 +3,7 @@ import './PlayButton.css'
 
 const PlayButton = (props) => (
   <button onClick={props.togglePlaying}>
-    Play
+    {props.playing ? 'Pause' : 'Play'}
   </button>
 )
 

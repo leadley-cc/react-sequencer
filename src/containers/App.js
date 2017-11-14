@@ -11,7 +11,9 @@ class App extends Component {
     return (
       <div className='App'>
         <Header>
-          <PlayButton togglePlaying={this.props.togglePlaying} />
+          <PlayButton
+            playing={this.props.playing}
+            togglePlaying={this.props.togglePlaying} />
         </Header>
         <SequencerGrid
           playing={this.props.playing}
