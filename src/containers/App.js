@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { togglePad, togglePlaying } from '../actions'
+import * as actions from '../actions'
 import { playAudioBuffer } from '../helpers/webAudio'
 import './App.css'
 import Header from '../components/Header'
@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   tick () {
+    this.props.nextActiveColumn()
     playAudioBuffer(this.props.samples.kick)
   }
 
@@ -60,10 +61,13 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   togglePad: (track, pad) => {
-    dispatch(togglePad(track, pad))
+    dispatch(actions.togglePad(track, pad))
   },
   togglePlaying: () => {
-    dispatch(togglePlaying())
+    dispatch(actions.togglePlaying())
+  },
+  nextActiveColumn: () => {
+    dispatch(actions.nextActiveColumn())
   }
 })
 

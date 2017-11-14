@@ -13,3 +13,7 @@ export const loadSample = (track, buffer) => ({
   track,
   buffer
 })
+
+export const nextActiveColumn = () => ({
+  type: 'NEXT_ACTIVE_COLUMN'
+})
