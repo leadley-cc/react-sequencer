@@ -8,11 +8,8 @@ export const playAudioBuffer = (audioBuffer, time = 0) => {
 }
 
 export const fetchSample = (sample, callback) => {
-  fetch(sample).then(
-    response => response.arrayBuffer()
-  ).then(
-    buffer => audioCtx.decodeAudioData(buffer)
-  ).then(
-    audioBuffer => callback(audioBuffer)
-  )
+  fetch(sample)
+    .then(response => response.arrayBuffer())
+    .then(buffer => audioCtx.decodeAudioData(buffer))
+    .then(audioBuffer => callback(audioBuffer))
 }
