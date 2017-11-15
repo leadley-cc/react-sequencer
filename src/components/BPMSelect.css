@@ -25,9 +25,7 @@
   color: white;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-
-   opacity: 1;
-
+#BPMSelect::-webkit-inner-spin-button,
+#BPMSelect::-webkit-outer-spin-button {
+  opacity: 1;
 }
