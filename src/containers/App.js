@@ -5,6 +5,7 @@ import * as beatScheduler from '../helpers/beatScheduler'
 import './App.css'
 import Header from '../components/Header'
 import PlayButton from '../components/PlayButton'
+import BPMSelect from '../components/BPMSelect'
 import SequencerGrid from '../components/SequencerGrid'
 
 class App extends Component {
@@ -55,6 +56,9 @@ class App extends Component {
           <PlayButton
             playing={this.props.playing}
             togglePlaying={this.props.togglePlaying} />
+          <BPMSelect
+            bpm={this.props.bpm}
+            setBpm={this.props.setBpm} />
         </Header>
         <SequencerGrid
           playing={this.props.playing}
@@ -83,6 +87,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   nextActiveColumn: () => {
     dispatch(actions.nextActiveColumn())
+  },
+  setBpm: (bpm) => {
+    dispatch(actions.setBpm(bpm))
   }
 })
 
