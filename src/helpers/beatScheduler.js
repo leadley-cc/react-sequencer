@@ -1,20 +1,19 @@
 import { audioCtx, playAudioBuffer } from '../helpers/webAudio'
 
 let nextBeatTime = 0
+let secondsToAdd = 0
 
-export const start = () => {
+export const start = (bpm) => {
+  secondsToAdd = 60 / bpm / 2
   nextBeatTime = audioCtx.currentTime
 }
 
 export const nextBeat = (bpm) => {
-  const secondsToAdd = 60 / bpm / 2
+  secondsToAdd = 60 / bpm / 2
   nextBeatTime += secondsToAdd
 }
 
 export const check = (callback) => {
-  // console.log('nextBeatTime: ', nextBeatTime)
-  // console.log('currentTime: ', audioCtx.currentTime)
-  // console.log('endOfWindow: ', audioCtx.currentTime + 0.1)
   while (nextBeatTime < audioCtx.currentTime + 0.1) {
     callback(nextBeatTime)
   }

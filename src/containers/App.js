@@ -33,9 +33,7 @@ class App extends Component {
   }
 
   startPlaying () {
-    beatScheduler.start()
-    this.props.nextActiveColumn()
-    this.beatScheduleTick()
+    setTimeout(() => beatScheduler.start(this.bpm), 25)
     this.beatScheduleInterval = setInterval(
       this.beatScheduleTick,
       25
