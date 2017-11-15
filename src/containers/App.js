@@ -11,8 +11,6 @@ class App extends Component {
   constructor (props) {
     super(props)
 
-    this.bpm = 170
-
     this.beatScheduleTick = this.beatScheduleTick.bind(this)
     this.startPlaying = this.startPlaying.bind(this)
     this.stopPlaying = this.stopPlaying.bind(this)
@@ -27,13 +25,13 @@ class App extends Component {
     beatScheduler.check((time) => {
       const activeTracks = this.nextActiveColumnState()
       beatScheduler.schedule(this.props.samples, activeTracks, time)
-      beatScheduler.nextBeat(this.bpm)
+      beatScheduler.nextBeat(this.props.bpm)
       this.props.nextActiveColumn()
     })
   }
 
   startPlaying () {
-    setTimeout(() => beatScheduler.start(this.bpm), 25)
+    setTimeout(() => beatScheduler.start(this.props.bpm), 25)
     this.beatScheduleInterval = setInterval(
       this.beatScheduleTick,
       25
@@ -72,7 +70,8 @@ const mapStateToProps = (state, ownProps) => ({
   samples: state.samples,
   pads: state.pads,
   playing: state.playing,
-  activeColumn: state.activeColumn
+  activeColumn: state.activeColumn,
+  bpm: state.bpm
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

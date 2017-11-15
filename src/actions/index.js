@@ -17,3 +17,8 @@ export const loadSample = (track, buffer) => ({
 export const nextActiveColumn = () => ({
   type: 'NEXT_ACTIVE_COLUMN'
 })
+
+export const setBpm = (bpm) => ({
+  type: 'SET_BPM',
+  bpm
+})
