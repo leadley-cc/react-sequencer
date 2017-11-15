@@ -2,7 +2,9 @@ import React from 'react'
 import './PlayButton.css'
 
 const PlayButton = (props) => (
-  <button onClick={props.togglePlaying}>
+  <button
+    id='PlayButton'
+    onClick={props.togglePlaying} >
     {props.playing ? 'Pause' : 'Play'}
   </button>
 )

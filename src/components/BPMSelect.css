@@ -1,0 +1,33 @@
+#BPMSelectSpan {
+  padding: 0 5px 5px 8px;
+  margin-left: 20px;
+
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+
+#BPMSelectLabel {
+  padding: 5px;
+  vertical-align: middle;
+}
+
+#BPMSelect {
+  border: none;
+  padding: 5px;
+  width: 3.3em;
+  vertical-align: middle;
+
+  font-size: 16px;
+  font-family: "Roboto Slab", serif;
+  letter-spacing: 0.05em;
+
+  background-color: none;
+  color: white;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+
+   opacity: 1;
+
+}
