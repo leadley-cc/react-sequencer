@@ -10,11 +10,3 @@ export default combineReducers({
   playing,
   activeColumn
 })
-
-export const getColumnState = (state, padIndex) => (
-  state.pads[padIndex]
-)
-
-export const getPadState = (state, padIndex, trackIndex) => (
-  state.pads[padIndex][trackIndex]
-)

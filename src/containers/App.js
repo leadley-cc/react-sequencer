@@ -18,9 +18,14 @@ class App extends Component {
     this.stopPlaying = this.stopPlaying.bind(this)
   }
 
+  nextActiveColumnState () {
+    const nextActiveColumn = (this.props.activeColumn + 1) % 16
+    return this.props.pads[nextActiveColumn]
+  }
+
   beatScheduleTick () {
-    const activeTracks = this.props.pads[this.props.activeColumn]
     beatScheduler.check((time) => {
+      const activeTracks = this.nextActiveColumnState()
       beatScheduler.schedule(this.props.samples, activeTracks, time)
       beatScheduler.nextBeat(this.bpm)
       this.props.nextActiveColumn()
@@ -30,6 +35,7 @@ class App extends Component {
   startPlaying () {
     beatScheduler.start()
     this.props.nextActiveColumn()
+    this.beatScheduleTick()
     this.beatScheduleInterval = setInterval(
       this.beatScheduleTick,
       25
@@ -41,8 +47,9 @@ class App extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.playing === this.props.playing) return
-    nextProps.playing ? this.startPlaying() : this.stopPlaying()
+    if (nextProps.playing !== this.props.playing) {
+      nextProps.playing ? this.startPlaying() : this.stopPlaying()
+    }
   }
 
   render () {

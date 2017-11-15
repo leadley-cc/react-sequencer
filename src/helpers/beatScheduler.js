@@ -12,9 +12,9 @@ export const nextBeat = (bpm) => {
 }
 
 export const check = (callback) => {
-  console.log('nextBeatTime: ', nextBeatTime)
-  console.log('currentTime: ', audioCtx.currentTime)
-  console.log('endOfWindow: ', audioCtx.currentTime + 0.1)
+  // console.log('nextBeatTime: ', nextBeatTime)
+  // console.log('currentTime: ', audioCtx.currentTime)
+  // console.log('endOfWindow: ', audioCtx.currentTime + 0.1)
   while (nextBeatTime < audioCtx.currentTime + 0.1) {
     callback(nextBeatTime)
   }
