@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
-import playActiveSamples from '../helpers/playActiveSamples'
+import { scheduleBeats, startSchedule } from '../helpers/beatScheduler'
 import './App.css'
 import Header from '../components/Header'
 import PlayButton from '../components/PlayButton'
@@ -10,26 +10,35 @@ import SequencerGrid from '../components/SequencerGrid'
 class App extends Component {
   constructor (props) {
     super(props)
-    this.tick = this.tick.bind(this)
+
+    this.bpm = 170
+
+    this.beatScheduleTick = this.beatScheduleTick.bind(this)
     this.startPlaying = this.startPlaying.bind(this)
     this.stopPlaying = this.stopPlaying.bind(this)
   }
 
-  tick () {
-    this.props.nextActiveColumn()
+  beatScheduleTick () {
     const columnState = this.props.pads[this.props.activeColumn]
-    playActiveSamples(this.props.samples, columnState)
+    scheduleBeats(this.props.samples, columnState, this.bpm)
   }
 
   startPlaying () {
-    this.interval = setInterval(
-      () => this.tick(),
-      60000 / 170 / 2
+    startSchedule()
+    this.props.nextActiveColumn()
+    this.beatScheduleInterval = setInterval(
+      this.beatScheduleTick,
+      25
+    )
+    this.nextColumnInterval = setInterval(
+      this.props.nextActiveColumn,
+      60000 / this.bpm / 2
     )
   }
 
   stopPlaying () {
-    clearInterval(this.interval)
+    clearInterval(this.nextColumnInterval)
+    clearInterval(this.beatScheduleInterval)
   }
 
   componentWillReceiveProps (nextProps) {
