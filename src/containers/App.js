@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
-import { scheduleBeats, startSchedule } from '../helpers/beatScheduler'
+import * as beatScheduler from '../helpers/beatScheduler'
 import './App.css'
 import Header from '../components/Header'
 import PlayButton from '../components/PlayButton'
@@ -19,25 +19,24 @@ class App extends Component {
   }
 
   beatScheduleTick () {
-    const columnState = this.props.pads[this.props.activeColumn]
-    scheduleBeats(this.props.samples, columnState, this.bpm)
+    const activeTracks = this.props.pads[this.props.activeColumn]
+    beatScheduler.check((time) => {
+      beatScheduler.schedule(this.props.samples, activeTracks, time)
+      beatScheduler.nextBeat(this.bpm)
+      this.props.nextActiveColumn()
+    })
   }
 
   startPlaying () {
-    startSchedule()
+    beatScheduler.start()
     this.props.nextActiveColumn()
     this.beatScheduleInterval = setInterval(
       this.beatScheduleTick,
       25
     )
-    this.nextColumnInterval = setInterval(
-      this.props.nextActiveColumn,
-      60000 / this.bpm / 2
-    )
   }
 
   stopPlaying () {
-    clearInterval(this.nextColumnInterval)
     clearInterval(this.beatScheduleInterval)
   }
 
