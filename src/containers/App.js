@@ -53,9 +53,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Header>
-          <PlayButton
-            playing={this.props.playing}
-            togglePlaying={this.props.togglePlaying} />
+          <PlayButton />
           <BPMSelect
             bpm={this.props.bpm}
             setBpm={this.props.setBpm} />
@@ -81,9 +79,6 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   togglePad: (track, pad) => {
     dispatch(actions.togglePad(track, pad))
-  },
-  togglePlaying: () => {
-    dispatch(actions.togglePlaying())
   },
   nextActiveColumn: () => {
     dispatch(actions.nextActiveColumn())
