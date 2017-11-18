@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { togglePad } from '../actions'
 import './SequencerGrid.css'
 import { TRACK_TITLES } from '../constants'
 import TrackDetails from './TrackDetails'
@@ -35,4 +37,16 @@ const SequencerGrid = (props) => {
   )
 }
 
-export default SequencerGrid
+const mapStateToProps = (state, ownProps) => ({
+  pads: state.pads,
+  playing: state.playing,
+  activeColumn: state.activeColumn
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  togglePad: (track, pad) => {
+    dispatch(togglePad(track, pad))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SequencerGrid)

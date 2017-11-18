@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions'
+import { nextActiveColumn } from '../actions'
 import * as beatScheduler from '../helpers/beatScheduler'
 import './App.css'
 import Header from '../components/Header'
@@ -56,11 +56,7 @@ class App extends Component {
           <PlayButton />
           <BPMSelect />
         </Header>
-        <SequencerGrid
-          playing={this.props.playing}
-          pads={this.props.pads}
-          activeColumn={this.props.activeColumn}
-          togglePad={this.props.togglePad} />
+        <SequencerGrid />
       </div>
     )
   }
@@ -75,11 +71,8 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  togglePad: (track, pad) => {
-    dispatch(actions.togglePad(track, pad))
-  },
   nextActiveColumn: () => {
-    dispatch(actions.nextActiveColumn())
+    dispatch(nextActiveColumn())
   }
 })
 
