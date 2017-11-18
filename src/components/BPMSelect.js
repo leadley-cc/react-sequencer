@@ -1,16 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { setBpm } from '../actions'
 import './BPMSelect.css'
 
 const BPMSelect = (props) => {
-  const oninput = (event) => {
+  const onInput = (event) => {
     props.setBpm(event.target.value)
   }
 
   return (
     <span id='BPMSelectSpan'>
-      <label
-        id='BPMSelectLabel'
-        htmlFor='BPMSelect'>
+      <label id='BPMSelectLabel' htmlFor='BPMSelect'>
         BPM:
       </label>
       <input
@@ -18,17 +18,20 @@ const BPMSelect = (props) => {
         type='number'
         min='50'
         max='200'
-        list='defaults'
         value={props.bpm}
-        onInput={oninput} />
-      {/* <datalist id='defaults'>
-        <option value='90' />
-        <option value='120' />
-        <option value='140' />
-        <option value='170' />
-      </datalist> */}
+        onInput={onInput} />
     </span>
   )
 }
 
-export default BPMSelect
+const mapStateToProps = (state, ownProps) => ({
+  bpm: state.bpm
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  setBpm: (bpm) => {
+    dispatch(setBpm(bpm))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BPMSelect)

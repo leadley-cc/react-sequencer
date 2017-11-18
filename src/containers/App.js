@@ -54,9 +54,7 @@ class App extends Component {
       <div className='App'>
         <Header>
           <PlayButton />
-          <BPMSelect
-            bpm={this.props.bpm}
-            setBpm={this.props.setBpm} />
+          <BPMSelect />
         </Header>
         <SequencerGrid
           playing={this.props.playing}
@@ -82,9 +80,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   nextActiveColumn: () => {
     dispatch(actions.nextActiveColumn())
-  },
-  setBpm: (bpm) => {
-    dispatch(actions.setBpm(bpm))
   }
 })
 
