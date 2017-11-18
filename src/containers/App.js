@@ -11,20 +11,13 @@ import SequencerGrid from '../components/SequencerGrid'
 class App extends Component {
   constructor (props) {
     super(props)
-
     this.beatScheduleTick = this.beatScheduleTick.bind(this)
-    this.startPlaying = this.startPlaying.bind(this)
-    this.stopPlaying = this.stopPlaying.bind(this)
-  }
-
-  nextActiveColumnState () {
-    const nextActiveColumn = (this.props.activeColumn + 1) % 16
-    return this.props.pads[nextActiveColumn]
   }
 
   beatScheduleTick () {
     beatScheduler.check((time) => {
-      const activeTracks = this.nextActiveColumnState()
+      const nextActiveColumn = (this.props.activeColumn + 1) % 16
+      const activeTracks = this.props.pads[nextActiveColumn]
       beatScheduler.schedule(this.props.samples, activeTracks, time)
       beatScheduler.nextBeat(this.props.bpm)
       this.props.nextActiveColumn()
