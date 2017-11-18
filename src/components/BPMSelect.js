@@ -4,7 +4,7 @@ import { setBpm } from '../actions'
 import './BPMSelect.css'
 
 const BPMSelect = (props) => {
-  const onInput = (event) => {
+  const onChange = (event) => {
     props.setBpm(event.target.value)
   }
 
@@ -19,7 +19,7 @@ const BPMSelect = (props) => {
         min='50'
         max='200'
         value={props.bpm}
-        onInput={onInput} />
+        onChange={onChange} />
     </span>
   )
 }
