@@ -1,22 +1,17 @@
 import { audioCtx, playAudioBuffer } from '../helpers/webAudio'
 
-let nextBeatTime = 0
-let secondsToAdd = 0
+export let nextBeatTime = 0
 
-export const start = (bpm) => {
-  secondsToAdd = 60 / bpm / 2
+export const start = () => {
   nextBeatTime = audioCtx.currentTime
 }
 
 export const nextBeat = (bpm) => {
-  secondsToAdd = 60 / bpm / 2
-  nextBeatTime += secondsToAdd
+  nextBeatTime += 60 / bpm / 2
 }
 
-export const check = (callback) => {
-  while (nextBeatTime < audioCtx.currentTime + 0.1) {
-    callback(nextBeatTime)
-  }
+export const check = () => {
+  return nextBeatTime < audioCtx.currentTime + 0.1
 }
 
 export const schedule = (samples, activeTracks, time = 0) => {

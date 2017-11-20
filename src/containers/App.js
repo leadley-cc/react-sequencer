@@ -15,17 +15,18 @@ class App extends Component {
   }
 
   beatScheduleTick () {
-    beatScheduler.check((time) => {
+    while (beatScheduler.check()) {
       const nextActiveColumn = (this.props.activeColumn + 1) % 16
       const activeTracks = this.props.pads[nextActiveColumn]
+      const time = beatScheduler.nextBeatTime
       beatScheduler.schedule(this.props.samples, activeTracks, time)
       beatScheduler.nextBeat(this.props.bpm)
       this.props.nextActiveColumn()
-    })
+    }
   }
 
   startPlaying () {
-    setTimeout(() => beatScheduler.start(this.props.bpm), 25)
+    setTimeout(beatScheduler.start, 25)
     this.beatScheduleInterval = setInterval(
       this.beatScheduleTick,
       25
