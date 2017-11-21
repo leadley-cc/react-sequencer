@@ -6,10 +6,3 @@ export const playAudioBuffer = (audioBuffer, time = 0) => {
   audioBufferSource.connect(audioCtx.destination)
   audioBufferSource.start(time)
 }
-
-export const fetchSample = (sample, callback) => {
-  fetch(sample)
-    .then(response => response.arrayBuffer())
-    .then(buffer => audioCtx.decodeAudioData(buffer))
-    .then(audioBuffer => callback(audioBuffer))
-}

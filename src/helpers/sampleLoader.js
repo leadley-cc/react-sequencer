@@ -1,26 +1,25 @@
 import { loadSample } from '../actions'
-import { fetchSample } from './webAudio'
+import { audioCtx } from './webAudio'
 
-import kickSample from '../samples/808Kick.wav'
-import snareSample from '../samples/808Snare.wav'
-import CHHSample from '../samples/808CHH.wav'
-import OHHSample from '../samples/808OHH.wav'
-import clapSample from '../samples/808Clap.wav'
-import rimSample from '../samples/808Rim.wav'
-import tomSample from '../samples/808Tom.wav'
-import cowbellSample from '../samples/808Cowbell.wav'
-
-const samples = [
-  kickSample, snareSample, CHHSample, OHHSample,
-  clapSample, rimSample, tomSample, cowbellSample
-]
+import kick from '../samples/808Kick.wav'
+import snare from '../samples/808Snare.wav'
+import chh from '../samples/808CHH.wav'
+import ohh from '../samples/808OHH.wav'
+import clap from '../samples/808Clap.wav'
+import rim from '../samples/808Rim.wav'
+import tom from '../samples/808Tom.wav'
+import cowbell from '../samples/808Cowbell.wav'
 
 const loadSamples = (store) => {
-  samples.forEach((sample, index) => {
-    fetchSample(sample, (audioBuffer) => {
+  const samples = [kick, snare, chh, ohh, clap, rim, tom, cowbell]
+  samples.forEach(
+    async (sample, index) => {
+      const response = await fetch(sample)
+      const buffer = await response.arrayBuffer()
+      const audioBuffer = await audioCtx.decodeAudioData(buffer)
       store.dispatch(loadSample(index, audioBuffer))
-    })
-  })
+    }
+  )
 }
 
 export default loadSamples
