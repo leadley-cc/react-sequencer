@@ -7,6 +7,7 @@ import Header from '../components/Header'
 import PlayButton from '../components/PlayButton'
 import BPMSelect from '../components/BPMSelect'
 import SequencerGrid from '../components/SequencerGrid'
+import Effects from '../components/Effects'
 
 class App extends Component {
   constructor (props) {
@@ -51,6 +52,7 @@ class App extends Component {
           <BPMSelect />
         </Header>
         <SequencerGrid />
+        <Effects />
       </div>
     )
   }
